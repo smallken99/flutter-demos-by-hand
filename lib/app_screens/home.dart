@@ -7,26 +7,76 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: Container(
-      alignment: Alignment.center,
-      // alignment: Alignment.bottomLeft,
-      color: Colors.deepPurple,
-      // width: 200.0, // 外面要包Center() width, height 才會有作用
-      // height: 100.0,
-      // margin: EdgeInsets.all(30.0), // margin 元件跟元件之間的距離
-      margin: EdgeInsets.only(left: 40.0, top: 30),
-      // padding: EdgeInsets.all(20.0), // padding 元件跟外層之間的距離
-      child: Text(
-        "Flight",
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-            decoration: TextDecoration.none,
-            fontSize: 75.0,
-            fontFamily: 'Raleway',
-            fontWeight: FontWeight.w700,
-            // fontWeight: FontWeight.w300,
-            // fontStyle: FontStyle.italic,
-            color: Colors.white),
-      ),
-    ));
+            padding: EdgeInsets.only(top: 30, left: 20),
+            alignment: Alignment.center,
+            color: Colors.deepPurple,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        "Spice Jet",
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 35.0,
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700,
+                            // fontWeight: FontWeight.w300,
+                            // fontStyle: FontStyle.italic,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "From Mumbai to Bangalore via New Delhi",
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 20.0,
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700,
+                            // fontWeight: FontWeight.w300,
+                            // fontStyle: FontStyle.italic,
+                            color: Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        "Goal Jet",
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 35.0,
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700,
+                            // fontWeight: FontWeight.w300,
+                            // fontStyle: FontStyle.italic,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        "From Push to New Delhi",
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 20.0,
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700,
+                            // fontWeight: FontWeight.w300,
+                            // fontStyle: FontStyle.italic,
+                            color: Colors.white),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            )));
   }
 }
