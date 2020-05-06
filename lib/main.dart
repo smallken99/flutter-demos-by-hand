@@ -12,8 +12,28 @@ void main() {
         title: Text('Long List'),
       ),
       body: getListView(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        tooltip: 'Add One More Item',
+        onPressed: () {
+          debugPrint("FAB clicked");
+        },
+      ),
     ),
   ));
+}
+
+void showSnapBar(BuildContext context, String item) {
+  var snapBar = SnackBar(
+    content: Text("You just tapped $item"),
+    action: SnackBarAction(
+      label: "UNDO",
+      onPressed: () {
+        debugPrint("Performing dummy UNDO operation");
+      },
+    ),
+  );
+  Scaffold.of(context).showSnackBar(snapBar);
 }
 
 List<String> getListElements() {
@@ -29,7 +49,8 @@ Widget getListView() {
       leading: Icon(Icons.arrow_right),
       title: Text(listItems[index]),
       onTap: () {
-        debugPrint("${listItems[index]} was tapped.");
+        // debugPrint("${listItems[index]} was tapped.");
+        showSnapBar(context, listItems[index]);
       },
     );
   });
