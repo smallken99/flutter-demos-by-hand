@@ -1,58 +1,51 @@
-// 在 first_screen.dart 寫一點邏輯,示範
-
-import "package:flutter/material.dart";
-import "./app_screens/home.dart";
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    // debugShowCheckedModeBanner: false,
-    title: "Exploring UI widgets",
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text('Long List'),
-      ),
-      body: getListView(),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        tooltip: 'Add One More Item',
-        onPressed: () {
-          debugPrint("FAB clicked");
-        },
-      ),
-    ),
+    title: "Stateful App Example",
+    home: FavoriteCity(),
   ));
 }
 
-void showSnapBar(BuildContext context, String item) {
-  var snapBar = SnackBar(
-    content: Text("You just tapped $item"),
-    action: SnackBarAction(
-      label: "UNDO",
-      onPressed: () {
-        debugPrint("Performing dummy UNDO operation");
-      },
-    ),
-  );
-  Scaffold.of(context).showSnackBar(snapBar);
+class FavoriteCity extends StatefulWidget {
+  FavoriteCity({Key key}) : super(key: key);
+
+  @override
+  _FavoriteCityState createState() => _FavoriteCityState();
 }
 
-List<String> getListElements() {
-  var items = List<String>.generate(1000, (counter) => "Item $counter");
-  return items;
-}
-
-Widget getListView() {
-  var listItems = getListElements();
-
-  var listView = ListView.builder(itemBuilder: (context, index) {
-    return ListTile(
-      leading: Icon(Icons.arrow_right),
-      title: Text(listItems[index]),
-      onTap: () {
-        // debugPrint("${listItems[index]} was tapped.");
-        showSnapBar(context, listItems[index]);
-      },
-    );
-  });
-  return listView;
+class _FavoriteCityState extends State<FavoriteCity> {
+  String nameCity = "";
+  @override
+  Widget build(BuildContext context) {
+    debugPrint("Favorite City widget is created.");
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Stateful App Example'),
+        ),
+        body: Container(
+          margin: EdgeInsets.all(20.0),
+          child: Column(
+            children: <Widget>[
+              TextField(
+                // onSubmitted: (String userInput) { // 輸入Enter才會觸發改變
+                onChanged: (String userInput) {
+                  // 邊打字當中馬上觸發改變
+                  setState(() {
+                    debugPrint(
+                        "set State is called , this tell framework to redraw the favCity widget");
+                    nameCity = userInput;
+                  });
+                },
+              ),
+              Padding(
+                  padding: EdgeInsets.all(30.0),
+                  child: Text(
+                    'Your best city is $nameCity',
+                    style: TextStyle(fontSize: 20.0),
+                  ))
+            ],
+          ),
+        ));
+  }
 }
