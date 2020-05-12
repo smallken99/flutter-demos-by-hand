@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: true,
           title: 'NoteKeeper',
           theme: ThemeData(primarySwatch: Colors.deepPurple),
           home: NoteList()),
